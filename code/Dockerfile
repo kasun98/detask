@@ -43,7 +43,7 @@ RUN /opt/conda/bin/conda create -n myenv python=3.11 -y
 # Install Conda dependencies from conda-forge
 RUN /opt/conda/bin/conda install -n myenv -c conda-forge \
     pyspark \
-    pytorch \
+    torch \
     numpy \
     pandas \
     scipy \
