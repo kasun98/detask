@@ -1,0 +1,13 @@
+2025-03-06 21:11:29,972 - INFO - --------------------------------------------------
+2025-03-06 21:11:29,972 - INFO - Loading configuration file.
+2025-03-06 21:11:29,974 - INFO - Initializing Spark session.
+2025-03-06 21:11:34,554 - INFO - Spark session initialized successfully.
+2025-03-06 21:11:34,554 - INFO - Loading AG News dataset.
+2025-03-06 21:11:40,104 - INFO - Test data CSV file successfully written to 'data/' directory.
+2025-03-06 21:11:40,105 - INFO - Reading dataset into Spark DataFrame.
+2025-03-06 21:11:45,661 - INFO - Processing task: process_data_all
+2025-03-06 21:11:45,661 - INFO - Starting data processing pipeline.
+2025-03-06 21:11:45,763 - INFO - Counting occurrences of all words.
+2025-03-06 21:11:50,223 - INFO - File saved: C:\Users\kdkas\Desktop\DE_task\outputs\word_count_all_20250306.parquet
+2025-03-06 21:11:50,223 - INFO - Data processing completed successfully.
+2025-03-06 21:11:50,223 - INFO - Stopping Spark session.

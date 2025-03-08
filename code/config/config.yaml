@@ -1,0 +1,22 @@
+hadoop_home: "${HADOOP_HOME}"
+
+# Define target words for 1st task
+target_words:
+  - "president"
+  - "the"
+  - "asia"
+
+# File paths and dataset settings
+huggingface_data:
+  dir: "sh0416/ag_news"
+  split: "test"
+
+csv:
+  output_dir: "code/data"
+  filename: "ag_news_test.csv"
+  full_path: "code/data/ag_news_test.csv"
+  text_column: "description"
+
+parquet:
+  output_prefix: "word_count"
+  output_prefix_all: "word_count_all"
