@@ -32,15 +32,14 @@ RUN apt-get update && \
 RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh && \
     chmod +x miniconda.sh && \
     sh miniconda.sh -b -p /opt/conda && \
-    rm miniconda.sh
+    rm miniconda.sh  # Clean up Miniconda installer
 
 # Set Conda environment path
 ENV PATH=/opt/conda/bin:$PATH
 
-# Create a Conda environment and install dependencies
+# Create a Conda environment and install dependencies in one RUN command
 RUN /opt/conda/bin/conda create -n myenv python=3.11 -y && \
-    /opt/conda/bin/conda activate myenv && \
-    /opt/conda/bin/conda install -c conda-forge \
+    /opt/conda/bin/conda install -n myenv -c conda-forge \
     pyspark \
     pytorch \
     numpy \
