@@ -28,8 +28,8 @@ RUN apt-get update && \
     openjdk-17-jdk \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Miniconda (Conda)
-RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-py311_23.1.0-1-Linux-x86_64.sh -o miniconda.sh && \
+# Install Miniconda (Conda) with retries in case of network issues
+RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh && \
     chmod +x miniconda.sh && \
     bash miniconda.sh -b -p /opt/conda && \
     rm miniconda.sh
