@@ -24,19 +24,9 @@ RUN apt-get update && \
     liblzma-dev \
     tk-dev \
     libffi-dev \
-    liblzma-dev \
     git \
     openjdk-17-jdk \
     && rm -rf /var/lib/apt/lists/*
-
-# Install Hadoop (You can install Hadoop from the official Apache repository or download a binary)
-RUN wget https://downloads.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz -P /tmp && \
-    tar -xzf /tmp/hadoop-3.3.5.tar.gz -C /opt && \
-    rm /tmp/hadoop-3.3.5.tar.gz
-
-# Set Hadoop environment variables
-ENV HADOOP_HOME=/opt/hadoop-3.3.5
-ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Install Miniconda (Conda)
 RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-py311_23.1.0-1-Linux-x86_64.sh -o miniconda.sh && \
@@ -44,16 +34,13 @@ RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-py311_23.1.0-1-Linu
     bash miniconda.sh -b -p /opt/conda && \
     rm miniconda.sh
 
-# Initialize Conda and set Conda environment path
-RUN /opt/conda/bin/conda init bash
-
 # Set Conda environment path
 ENV PATH=/opt/conda/bin:$PATH
 
 # Create the environment and install dependencies
-RUN /opt/conda/bin/conda create -n myenv python=3.11 && \
-    /opt/conda/bin/conda activate myenv && \
-    /opt/conda/bin/conda install -c conda-forge \
+RUN conda create -n myenv python=3.11 && \
+    conda activate myenv && \
+    conda install -c conda-forge \
     pyspark \
     pytorch \
     numpy \
@@ -78,7 +65,7 @@ RUN /opt/conda/bin/conda create -n myenv python=3.11 && \
     seqeval \
     gensim \
     numba && \
-    /opt/conda/bin/conda clean --all -f -y
+    conda clean --all -f -y
 
 # Install additional Python dependencies from requirements.txt
 COPY requirements.txt /tmp/requirements.txt
