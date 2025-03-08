@@ -1,5 +1,5 @@
 # Use Debian-based image
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 # Set environment variables
 ENV LANG C.UTF-8
@@ -26,16 +26,16 @@ RUN apt-get update && \
     libffi-dev \
     liblzma-dev \
     git \
-    openjdk-11-jdk \
+    openjdk-17-jdk \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Hadoop (You can install Hadoop from the official Apache repository or download a binary)
-RUN wget https://downloads.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz -P /tmp && \
-    tar -xzf /tmp/hadoop-3.3.4.tar.gz -C /opt && \
-    rm /tmp/hadoop-3.3.4.tar.gz
+RUN wget https://downloads.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz -P /tmp && \
+    tar -xzf /tmp/hadoop-3.3.5.tar.gz -C /opt && \
+    rm /tmp/hadoop-3.3.5.tar.gz
 
 # Set Hadoop environment variables
-ENV HADOOP_HOME=/opt/hadoop-3.3.4
+ENV HADOOP_HOME=/opt/hadoop-3.3.5
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Install Miniconda (Conda)
