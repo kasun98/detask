@@ -25,13 +25,13 @@ RUN apt-get update && \
     libffi-dev \
     liblzma-dev \
     git \
-    openjdk-17-jdk \
-    && rm -rf /var/lib/apt/lists/*
+    openjdk-17-jdk && \
+    rm -rf /var/lib/apt/lists/*  # Cleanup to reduce image size
 
 # Install Miniconda (Conda)
 RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh && \
     chmod +x miniconda.sh && \
-    sh miniconda.sh -b -p /opt/conda && \  # Using sh instead of bash
+    sh miniconda.sh -b -p /opt/conda && \
     rm miniconda.sh
 
 # Set Conda environment path
