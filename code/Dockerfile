@@ -6,9 +6,10 @@ ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Create a new environment with Python 3.11
-RUN conda create -n myenv python=3.11 -y && \
-    conda activate myenv && \
-    conda install -c conda-forge \
+RUN conda create -n myenv python=3.11 -y
+
+# Install necessary packages in the created environment
+RUN conda install -n myenv -c conda-forge \
     pyspark \
     pytorch \
     numpy \
@@ -39,4 +40,4 @@ RUN conda create -n myenv python=3.11 -y && \
 WORKDIR /code
 
 # Set default command to activate the environment
-CMD ["/bin/bash", "-c", "source activate myenv && exec bash"]
+CMD ["/bin/bash", "-c", "source /opt/conda/bin/activate myenv && exec bash"]
