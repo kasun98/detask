@@ -2,14 +2,11 @@
 FROM conda/miniconda3:latest
 
 # Set environment variables
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install Python 3.11 (ensure correct Python version)
-RUN conda install python=3.11 -y
-
-# Create a new environment and install required packages
-RUN conda create -n myenv python=3.11 && \
+# Create a new environment with Python 3.11
+RUN conda create -n myenv python=3.11 -y && \
     conda activate myenv && \
     conda install -c conda-forge \
     pyspark \
