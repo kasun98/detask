@@ -26,29 +26,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker Image
-        id: docker_build
-        uses: docker/build-push-action@v5
-        with:
-          context: code/
-          push: false # We'll push in a separate step if the build succeeds
-          tags: dewkd98/dewpublic:latest
-          platforms: linux/amd64
-          load: true # Load the image into the local Docker daemon
-
-      - name: Upload Conda Install Logs
-        if: ${{ failure() }} # Only upload if the build failed
-        uses: actions/upload-artifact@v3
-        with:
-          name: conda-install-logs
-          path: code/conda_install.log # Path to the log file inside your context
-
-      - name: Push Docker Image
-        if: ${{ success() && steps.docker_build.outputs.digest }} # Only push if the build succeeded and digest is available
+      - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
           context: code/
           push: true
           tags: dewkd98/dewpublic:latest
           platforms: linux/amd64
-          load: false # No need to load again
