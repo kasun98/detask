@@ -29,9 +29,9 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Miniconda (Conda)
-RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-py311_23.1.0-1-Linux-x86_64.sh -o miniconda.sh && \
+RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh && \
     chmod +x miniconda.sh && \
-    bash miniconda.sh -b -p /opt/conda && \
+    sh miniconda.sh -b -p /opt/conda && \  # Using sh instead of bash
     rm miniconda.sh
 
 # Set Conda environment path
