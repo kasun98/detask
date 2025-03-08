@@ -1,45 +1,17 @@
-# Use Debian-based image
-FROM debian:bookworm-slim
+# Use pre-installed Conda image based on Debian
+FROM conda/miniconda3:latest
 
 # Set environment variables
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install system dependencies
-RUN apt-get update && \
-    apt-get install -y \
-    curl \
-    build-essential \
-    python3.11 \
-    python3.11-distutils \
-    libssl-dev \
-    libbz2-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    wget \
-    zlib1g-dev \
-    libncurses5-dev \
-    libgdbm-dev \
-    libnss3-dev \
-    liblzma-dev \
-    tk-dev \
-    libffi-dev \
-    git \
-    openjdk-17-jdk \
-    && rm -rf /var/lib/apt/lists/*
+# Install Python 3.11 (ensure correct Python version)
+RUN conda install python=3.11 -y
 
-# Install Miniconda (Conda) with retries in case of network issues
-RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh && \
-    chmod +x miniconda.sh && \
-    bash miniconda.sh -b -p /opt/conda && \
-    rm miniconda.sh
-
-# Set Conda environment path
-ENV PATH=/opt/conda/bin:$PATH
-
-# Create the environment and install dependencies
+# Create a new environment and install required packages
 RUN conda create -n myenv python=3.11 && \
-    /opt/conda/bin/conda install -n myenv -c conda-forge \
+    conda activate myenv && \
+    conda install -c conda-forge \
     pyspark \
     pytorch \
     numpy \
@@ -64,14 +36,10 @@ RUN conda create -n myenv python=3.11 && \
     seqeval \
     gensim \
     numba && \
-    /opt/conda/bin/conda clean --all -f -y
+    conda clean --all -f -y
 
-# Install additional Python dependencies from requirements.txt
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
-
-# Set working directory
+# Set the working directory
 WORKDIR /code
 
 # Set default command to activate the environment
-CMD ["/opt/conda/bin/conda", "run", "--no-capture-output", "-n", "myenv", "bash"]
+CMD ["/bin/bash", "-c", "source activate myenv && exec bash"]
