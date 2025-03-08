@@ -40,33 +40,6 @@ ENV PATH=/opt/conda/bin:$PATH
 # Create a Conda environment and install dependencies in separate steps
 RUN /opt/conda/bin/conda create -n myenv python=3.11 -y
 
-# Install Conda dependencies from conda-forge
-RUN /opt/conda/bin/conda install -n myenv -c conda-forge \
-    pyspark \
-    torch \
-    numpy \
-    pandas \
-    scipy \
-    scikit-learn \
-    polars \
-    orjson \
-    pyarrow \
-    awswrangler \
-    accelerate \
-    duckdb \
-    s3fs \
-    umap-learn \
-    smart-open \
-    onnxruntime \
-    spacy \
-    sqlalchemy \
-    pytest \
-    transformers \
-    seqeval \
-    gensim \
-    numba -y && \
-    /opt/conda/bin/conda clean --all -f -y
-
 # Install additional Python dependencies from requirements.txt
 COPY requirements.txt /tmp/requirements.txt
 RUN /opt/conda/bin/pip install --no-cache-dir -r /tmp/requirements.txt
