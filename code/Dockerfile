@@ -45,10 +45,10 @@ COPY requirements.txt /tmp/requirements.txt
 RUN /opt/conda/bin/pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Copy the code into the container
-COPY . /code/
+COPY . /app/code/
 
 # Set working directory
-WORKDIR /code
+WORKDIR /app
 
 # Set default command to open bash with Conda's base environment
 CMD ["/bin/bash"]
