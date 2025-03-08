@@ -1,5 +1,5 @@
-# Use Conda pre-installed image (Miniconda3)
-FROM continuumio/miniconda3:py311
+# Use Miniconda3 with Python 3.11 (Official Miniconda image)
+FROM miniconda3:latest
 
 # Set environment variables
 ENV LANG C.UTF-8
@@ -35,8 +35,9 @@ RUN wget https://downloads.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.ta
 ENV HADOOP_HOME=/opt/hadoop-3.3.5
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-# Install the required dependencies directly into the base Conda environment
-RUN conda install -c conda-forge \
+# Install the required dependencies and specify Python 3.11
+RUN conda install -y python=3.11 && \
+    conda install -c conda-forge \
     pyspark \
     pytorch \
     numpy \
