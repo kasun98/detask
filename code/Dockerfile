@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y \
     curl \
+    bash \                # Ensure bash is installed
     build-essential \
     libssl-dev \
     libbz2-dev \
