@@ -39,8 +39,7 @@ ENV PATH=/opt/conda/bin:$PATH
 
 # Create the environment and install dependencies
 RUN conda create -n myenv python=3.11 && \
-    conda activate myenv && \
-    conda install -c conda-forge \
+    /opt/conda/bin/conda install -n myenv -c conda-forge \
     pyspark \
     pytorch \
     numpy \
@@ -65,7 +64,7 @@ RUN conda create -n myenv python=3.11 && \
     seqeval \
     gensim \
     numba && \
-    conda clean --all -f -y
+    /opt/conda/bin/conda clean --all -f -y
 
 # Install additional Python dependencies from requirements.txt
 COPY requirements.txt /tmp/requirements.txt
@@ -75,4 +74,4 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 WORKDIR /code
 
 # Set default command to activate the environment
-CMD ["bash"]
+CMD ["/opt/conda/bin/conda", "run", "--no-capture-output", "-n", "myenv", "bash"]
