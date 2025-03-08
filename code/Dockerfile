@@ -1,5 +1,5 @@
-# Use official Miniconda3 image (continuumio/miniconda3)
-FROM continuumio/miniconda3:22.9.0
+# Use Debian-based image
+FROM debian:bookworm-slim
 
 # Set environment variables
 ENV LANG C.UTF-8
@@ -10,6 +10,8 @@ RUN apt-get update && \
     apt-get install -y \
     curl \
     build-essential \
+    python3.11 \
+    python3.11-distutils \
     libssl-dev \
     libbz2-dev \
     libreadline-dev \
@@ -22,6 +24,7 @@ RUN apt-get update && \
     liblzma-dev \
     tk-dev \
     libffi-dev \
+    liblzma-dev \
     git \
     openjdk-17-jdk \
     && rm -rf /var/lib/apt/lists/*
@@ -35,9 +38,21 @@ RUN wget https://downloads.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.ta
 ENV HADOOP_HOME=/opt/hadoop-3.3.5
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-# Install Python 3.11 and other required dependencies
-RUN conda install -y python=3.11 && \
-    conda install -c conda-forge \
+# Install Miniconda (Conda)
+RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-py311_23.1.0-1-Linux-x86_64.sh -o miniconda.sh && \
+    chmod +x miniconda.sh && \
+    bash miniconda.sh -b -p /opt/conda && \
+    rm miniconda.sh
+
+# Initialize Conda and set Conda environment path
+RUN /opt/conda/bin/conda init bash
+
+# Set Conda environment path
+ENV PATH=/opt/conda/bin:$PATH
+
+# Install Python 3.11 in base Conda environment
+RUN /opt/conda/bin/conda install -c conda-forge \
+    python=3.11 \
     pyspark \
     pytorch \
     numpy \
@@ -62,14 +77,14 @@ RUN conda install -y python=3.11 && \
     seqeval \
     gensim \
     numba && \
-    conda clean --all -f -y
+    /opt/conda/bin/conda clean --all -f -y
 
 # Install additional Python dependencies from requirements.txt
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+RUN /opt/conda/bin/pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Set working directory
 WORKDIR /code
 
-# Set default command to activate the base environment
-CMD ["bash"]
+# Set default command to open bash with Conda's base environment
+CMD ["/bin/bash"]
