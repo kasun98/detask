@@ -65,7 +65,7 @@ RUN /opt/conda/bin/conda install -n myenv -c conda-forge \
     transformers \
     seqeval \
     gensim \
-    numba -y && \
+    numba -y > conda_install.log 2>&1 && \
     /opt/conda/bin/conda clean --all -f -y
 
 # Install additional Python dependencies from requirements.txt
