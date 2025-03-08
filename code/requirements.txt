@@ -2,3 +2,4 @@ pyspark
 findspark
 pandas
 datasets
+neo4j

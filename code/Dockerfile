@@ -54,7 +54,6 @@ RUN /opt/conda/bin/conda install -n myenv -c conda-forge \
     awswrangler \
     accelerate \
     duckdb \
-    neo4j \
     s3fs \
     umap-learn \
     smart-open \
