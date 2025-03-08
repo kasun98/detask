@@ -78,7 +78,7 @@ RUN conda create -n myenv python=3.11 && \
     conda clean --all -f -y
 
 # Install additional Python dependencies from requirements.txt
-COPY code/requirements.txt /tmp/requirements.txt
+COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Set working directory
