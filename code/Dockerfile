@@ -40,17 +40,20 @@ ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Install Miniconda (Conda)
 RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-py311_23.1.0-1-Linux-x86_64.sh -o miniconda.sh && \
+    chmod +x miniconda.sh && \
     bash miniconda.sh -b -p /opt/conda && \
-    rm miniconda.sh && \
-    /opt/conda/bin/conda init bash
+    rm miniconda.sh
+
+# Initialize Conda and set Conda environment path
+RUN /opt/conda/bin/conda init bash
 
 # Set Conda environment path
 ENV PATH=/opt/conda/bin:$PATH
 
 # Create the environment and install dependencies
-RUN conda create -n myenv python=3.11 && \
-    conda activate myenv && \
-    conda install -c conda-forge \
+RUN /opt/conda/bin/conda create -n myenv python=3.11 && \
+    /opt/conda/bin/conda activate myenv && \
+    /opt/conda/bin/conda install -c conda-forge \
     pyspark \
     pytorch \
     numpy \
@@ -75,7 +78,7 @@ RUN conda create -n myenv python=3.11 && \
     seqeval \
     gensim \
     numba && \
-    conda clean --all -f -y
+    /opt/conda/bin/conda clean --all -f -y
 
 # Install additional Python dependencies from requirements.txt
 COPY requirements.txt /tmp/requirements.txt
