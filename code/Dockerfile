@@ -28,7 +28,7 @@ RUN apt-get update && \
     openjdk-17-jdk && \
     rm -rf /var/lib/apt/lists/*
 
-# Install Miniconda
+# Install Miniconda (Conda)
 RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh && \
     chmod +x miniconda.sh && \
     sh miniconda.sh -b -p /opt/conda && \
@@ -40,11 +40,12 @@ ENV PATH=/opt/conda/bin:$PATH
 # Create a Conda environment with Python 3.11
 RUN /opt/conda/bin/conda create -n myenv python=3.11 -y
 
+# Ensure the container always uses Python 3.11 from Conda
 ENV PATH="/opt/conda/envs/myenv/bin:$PATH"
 
 # Install additional Python dependencies from requirements.txt
 COPY requirements.txt /tmp/requirements.txt
-RUN /opt/conda/bin/pip install --no-cache-dir -r /tmp/requirements.txt
+RUN /opt/conda/envs/myenv/bin/pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Copy the code into the container
 COPY . /app/code/
@@ -52,5 +53,5 @@ COPY . /app/code/
 # Set working directory
 WORKDIR /app
 
-# Set default command to open bash
+# Set default command to open bash with Conda's Python 3.11
 CMD ["/bin/bash"]
