@@ -28,7 +28,7 @@ RUN apt-get update && \
     openjdk-17-jdk && \
     rm -rf /var/lib/apt/lists/*
 
-# Install Miniconda (Conda)
+# Install Miniconda
 RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh && \
     chmod +x miniconda.sh && \
     sh miniconda.sh -b -p /opt/conda && \
@@ -37,8 +37,10 @@ RUN curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64
 # Set Conda environment path
 ENV PATH=/opt/conda/bin:$PATH
 
-# Create a Conda environment and install dependencies in separate steps
+# Create a Conda environment with Python 3.11
 RUN /opt/conda/bin/conda create -n myenv python=3.11 -y
+
+ENV PATH="/opt/conda/envs/myenv/bin:$PATH"
 
 # Install additional Python dependencies from requirements.txt
 COPY requirements.txt /tmp/requirements.txt
@@ -50,5 +52,5 @@ COPY . /app/code/
 # Set working directory
 WORKDIR /app
 
-# Set default command to open bash with Conda's base environment
+# Set default command to open bash
 CMD ["/bin/bash"]
