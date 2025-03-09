@@ -12,9 +12,9 @@ huggingface_data:
   split: "test"
 
 csv:
-  output_dir: "code/data"
+  output_dir: "outputs/data"
   filename: "ag_news_test.csv"
-  full_path: "code/data/ag_news_test.csv"
+  full_path: "outputs/data/ag_news_test.csv"
   text_column: "description"
 
 parquet:

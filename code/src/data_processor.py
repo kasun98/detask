@@ -14,7 +14,7 @@ def data_processor(df_spark: DataFrame, method: str, CSV_TEXT_COLUMN: str, TARGE
         method (str): Processing method. Either "TARGET_WORDS" or "ALL_WORDS".
         CSV_TEXT_COLUMN (str): Column contain the text data, 
         TARGET_WORDS (list): Specific words to count, 
-        OUTPUT_PREFIX (str): Output dir of parquet file
+        OUTPUT_PREFIX (str): Output filename of parquet file
 
     Raises:
         ValueError: If an unsupported processing method is provided.
