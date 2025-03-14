@@ -1,88 +1,14 @@
-2025-03-06 19:01:39,504 - INFO - --------------------------------------------------
-2025-03-06 19:01:39,504 - INFO - Loading configuration file.
-2025-03-06 19:01:39,506 - INFO - Initializing Spark session.
-2025-03-06 19:01:44,176 - INFO - Spark session initialized successfully.
-2025-03-06 19:01:44,177 - INFO - Loading AG News dataset.
-2025-03-06 19:01:51,057 - INFO - Test data CSV file successfully written to 'data/' directory.
-2025-03-06 19:01:51,058 - INFO - Reading dataset into Spark DataFrame.
-2025-03-06 19:01:56,898 - INFO - Processing task: process_data
-2025-03-06 19:01:56,899 - INFO - Starting data processing pipeline.
-2025-03-06 19:01:56,981 - INFO - Filtering for target words: ['president', 'the', 'asia']
-2025-03-06 19:01:56,996 - INFO - Counting occurrences of target words.
-2025-03-06 19:02:00,071 - INFO - File saved: C:\Users\kdkas\Desktop\DE_task\outputs\word_count_20250306.parquet
-2025-03-06 19:02:00,071 - INFO - Data processing completed successfully.
-2025-03-06 19:02:00,072 - INFO - Stopping Spark session.
-2025-03-06 20:13:50,712 - INFO - --------------------------------------------------
-2025-03-06 20:13:50,713 - INFO - Loading configuration file.
-2025-03-06 20:13:50,713 - ERROR - Error in data processing pipeline: [Errno 2] No such file or directory: 'C:\\Users\\kdkas\\Desktop\\DE_task\\config\\config.yaml'
-2025-03-06 20:13:50,714 - INFO - Stopping Spark session.
-2025-03-06 20:17:30,121 - INFO - --------------------------------------------------
-2025-03-06 20:17:30,121 - INFO - Loading configuration file.
-2025-03-06 20:17:30,123 - INFO - Initializing Spark session.
-2025-03-06 20:17:34,552 - INFO - Spark session initialized successfully.
-2025-03-06 20:17:34,553 - INFO - Loading AG News dataset.
-2025-03-06 20:17:40,584 - INFO - Test data CSV file successfully written to 'data/' directory.
-2025-03-06 20:17:40,585 - INFO - Reading dataset into Spark DataFrame.
-2025-03-06 20:17:46,539 - INFO - Processing task: process_data
-2025-03-06 20:17:46,539 - INFO - Starting data processing pipeline.
-2025-03-06 20:17:46,623 - INFO - Filtering for target words: ['president', 'the', 'asia']
-2025-03-06 20:17:46,643 - INFO - Counting occurrences of target words.
-2025-03-06 20:17:49,908 - INFO - File saved: C:\Users\kdkas\Desktop\DE_task\outputs\word_count_20250306.parquet
-2025-03-06 20:17:49,909 - INFO - Data processing completed successfully.
-2025-03-06 20:17:49,909 - INFO - Stopping Spark session.
-2025-03-06 20:18:24,221 - INFO - --------------------------------------------------
-2025-03-06 20:18:24,221 - INFO - Loading configuration file.
-2025-03-06 20:18:24,223 - INFO - Initializing Spark session.
-2025-03-06 20:18:28,675 - INFO - Spark session initialized successfully.
-2025-03-06 20:18:28,675 - INFO - Loading AG News dataset.
-2025-03-06 20:18:35,141 - INFO - Test data CSV file successfully written to 'data/' directory.
-2025-03-06 20:18:35,142 - INFO - Reading dataset into Spark DataFrame.
-2025-03-06 20:18:41,328 - INFO - Processing task: process_data
-2025-03-06 20:18:41,328 - INFO - Starting data processing pipeline.
-2025-03-06 20:18:41,413 - INFO - Filtering for target words: ['president', 'the', 'asia']
-2025-03-06 20:18:41,433 - INFO - Counting occurrences of target words.
-2025-03-06 20:18:44,391 - INFO - File saved: C:\Users\kdkas\Desktop\DE_task\outputs\word_count_20250306.parquet
-2025-03-06 20:18:44,392 - INFO - Data processing completed successfully.
-2025-03-06 20:18:44,392 - INFO - Stopping Spark session.
-2025-03-06 21:11:06,831 - INFO - --------------------------------------------------
-2025-03-06 21:11:06,832 - INFO - Loading configuration file.
-2025-03-06 21:11:06,834 - INFO - Initializing Spark session.
-2025-03-06 21:11:11,683 - INFO - Spark session initialized successfully.
-2025-03-06 21:11:11,683 - INFO - Loading AG News dataset.
-2025-03-06 21:11:17,230 - INFO - Test data CSV file successfully written to 'data/' directory.
-2025-03-06 21:11:17,231 - INFO - Reading dataset into Spark DataFrame.
-2025-03-06 21:11:23,286 - INFO - Processing task: process_data
-2025-03-06 21:11:23,286 - INFO - Starting data processing pipeline.
-2025-03-06 21:11:23,391 - INFO - Filtering for target words: ['president', 'the', 'asia']
-2025-03-06 21:11:23,415 - INFO - Counting occurrences of target words.
-2025-03-06 21:11:26,668 - INFO - File saved: C:\Users\kdkas\Desktop\DE_task\outputs\word_count_20250306.parquet
-2025-03-06 21:11:26,668 - INFO - Data processing completed successfully.
-2025-03-06 21:11:26,668 - INFO - Stopping Spark session.
-2025-03-09 12:25:18,474 - INFO - --------------------------------------------------
-2025-03-09 12:25:18,475 - INFO - Loading configuration file.
-2025-03-09 12:25:18,492 - INFO - Initializing Spark session.
-2025-03-09 12:25:29,815 - INFO - Spark session initialized successfully.
-2025-03-09 12:25:29,815 - INFO - Loading AG News dataset.
-2025-03-09 12:25:37,248 - INFO - Test data CSV file successfully written to 'data/' directory.
-2025-03-09 12:25:37,249 - INFO - Reading dataset into Spark DataFrame.
-2025-03-09 12:25:44,190 - INFO - Processing task: process_data
-2025-03-09 12:25:44,190 - INFO - Starting data processing pipeline.
-2025-03-09 12:25:44,282 - INFO - Filtering for target words: ['president', 'the', 'asia']
-2025-03-09 12:25:44,303 - INFO - Counting occurrences of target words.
-2025-03-09 12:25:47,701 - INFO - File saved: C:\Users\kdkas\Desktop\DE_task\outputs\word_count_20250309.parquet
-2025-03-09 12:25:47,702 - INFO - Data processing completed successfully.
-2025-03-09 12:25:47,702 - INFO - Stopping Spark session.
-2025-03-09 16:47:02,222 - INFO - --------------------------------------------------
-2025-03-09 16:47:02,223 - INFO - Loading configuration file.
-2025-03-09 16:47:02,229 - INFO - Initializing Spark session.
-2025-03-09 16:47:12,462 - INFO - Spark session initialized successfully.
-2025-03-09 16:47:12,462 - INFO - Loading AG News dataset.
-2025-03-09 16:47:18,543 - INFO - Test data CSV file successfully written to 'data/' directory.
-2025-03-09 16:47:18,544 - INFO - Reading dataset into Spark DataFrame.
-2025-03-09 16:47:24,501 - INFO - Processing task: process_data
-2025-03-09 16:47:24,502 - INFO - Starting data processing pipeline.
-2025-03-09 16:47:24,601 - INFO - Filtering for target words: ['president', 'the', 'asia']
-2025-03-09 16:47:24,620 - INFO - Counting occurrences of target words.
-2025-03-09 16:47:28,187 - INFO - File saved: C:\Users\kdkas\Desktop\DE_task\outputs\word_count_20250309.parquet
-2025-03-09 16:47:28,188 - INFO - Data processing completed successfully.
-2025-03-09 16:47:28,188 - INFO - Stopping Spark session.
+2025-03-13 21:15:22,687 - INFO - --------------------------------------------------
+2025-03-13 21:15:22,688 - INFO - Loading configuration file.
+2025-03-13 21:15:22,689 - INFO - Initializing Spark session.
+2025-03-13 21:15:27,974 - INFO - Spark session initialized successfully.
+2025-03-13 21:15:27,974 - INFO - Loading AG News dataset.
+2025-03-13 21:15:35,460 - INFO - Test data CSV file successfully written to 'data/' directory.
+2025-03-13 21:15:35,460 - INFO - Reading dataset into Spark DataFrame.
+2025-03-13 21:15:41,854 - INFO - Processing task: process_data
+2025-03-13 21:15:41,855 - INFO - Starting data processing pipeline.
+2025-03-13 21:15:41,950 - INFO - Filtering for target words: ['president', 'the', 'asia']
+2025-03-13 21:15:41,971 - INFO - Counting occurrences of target words.
+2025-03-13 21:15:45,717 - INFO - File saved: C:\Users\kdkas\Desktop\DE_task\outputs\word_count_20250313.parquet
+2025-03-13 21:15:45,717 - INFO - Data processing completed successfully.
+2025-03-13 21:15:45,718 - INFO - Stopping Spark session.
