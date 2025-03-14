@@ -26,7 +26,7 @@ def test_load_data():
     """Test loading data and saving it as CSV."""
     os.makedirs(TEST_CSV_DIR, exist_ok=True)
     
-    load_data("ag_news", "test[:10]", TEST_CSV_DIR, TEST_CSV_FILENAME)
+    load_data("sh0416/ag_news", "test[:10]", TEST_CSV_DIR, TEST_CSV_FILENAME)
     
     csv_path = os.path.join(TEST_CSV_DIR, TEST_CSV_FILENAME)
     assert os.path.exists(csv_path), "CSV file was not created"
